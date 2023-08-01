@@ -2,7 +2,7 @@
 using TMPro;
 public class ScoreManager : MonoBehaviour {
 	
-	int score = 0, bestScore = 0, lines;
+	public int score = 0, bestScore = 0, lines;
 	public int level = 1, linesPerLevel = 5;
 	public TextMeshProUGUI textScore, textLines, textLevel, textBestScore, textScore2;
 	const int minLines = 1, maxLines = 4;
@@ -17,7 +17,6 @@ public class ScoreManager : MonoBehaviour {
 	{
 		Reset();
         spawnVortex.SetActive(false);
-    
 	}
     public void ScoreLines(int n)
 	{

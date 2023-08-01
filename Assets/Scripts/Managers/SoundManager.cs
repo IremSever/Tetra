@@ -68,7 +68,7 @@ public class SoundManager : MonoBehaviour {
 		PlayerPrefs.SetFloat(FXVolumeKey, fxVolume);
 		PlayerPrefs.Save();
 	}
-	private void LoadSoundSettings()
+	void LoadSoundSettings()
 	{
 		musicEnabled = PlayerPrefs.GetInt(MusicEnabledKey, 1) == 1;
 		fxEnabled = PlayerPrefs.GetInt(FXEnabledKey, 1) == 1;

@@ -39,7 +39,8 @@ public class GameController : MonoBehaviour {
 	}
     void Start () 
 	{
-		ToggleMainMenu();
+		if(!gameStarted)
+			ToggleMainMenu();
 	}
 	void Update () 
 	{
@@ -54,44 +55,7 @@ public class GameController : MonoBehaviour {
 
         if (gameStarted)
         {
-			mainMenuPanel.SetActive(false);
-			mainMenuBg.SetActive(false);
-			scoreBoard.SetActive(true);
-			lineBoard.SetActive(true);
-			boardCode.SetActive(true);
-			levelBoard.SetActive(true);
-			pauseBoard.SetActive(true);
-			spawnerBoard.SetActive(true);
-			particleBoard.SetActive(true);
-			ghostBoard.SetActive(true);
-
-			gameBoard = GameObject.FindObjectOfType<Board>();
-			spawner = GameObject.FindObjectOfType<Spawner>();
-			soundManager = GameObject.FindObjectOfType<SoundManager>();
-			scoreManager = GameObject.FindObjectOfType<ScoreManager>();
-			ghost = GameObject.FindObjectOfType<Ghost>();
-			if (!gameBoard)
-			Debug.LogWarning("No game board defined!");
-			if (!soundManager)
-			Debug.LogWarning("No sound manager defined!");
-			if (!scoreManager)
-			Debug.LogWarning("No score manager defined!");
-			if (!spawner)
-			Debug.LogWarning("No spawner defined!");
-			else
-			{
-				spawner.transform.position = Vectorf.Round(spawner.transform.position);
-				if (!activeShape)
-					activeShape = spawner.SpawnShape();
-			}
-				timeToNextKeyDown = Time.time + keyRepeatRateDown;
-				timeToNextKeyLeftRight = Time.time + keyRepeatRateLeftRight;
-				timeToNextKeyRotate = Time.time + keyRepeatRateRotate;
-				if (gameOverPanel)
-					gameOverPanel.SetActive(false);
-				if (pausePanel)
-					pausePanel.SetActive(false);
-				dropIntervalModded = Mathf.Clamp(dropInterval - ((float)scoreManager.level * 0.1f), 0.05f, 1f);
+			Restart();
         }
 	}
 	void LateUpdate()
