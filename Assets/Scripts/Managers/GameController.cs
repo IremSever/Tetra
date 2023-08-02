@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour {
 	Shape activeShape;
 	Ghost ghost;
 	public float dropInterval = 0.1f;
-	public float dropIntervalModded, timeToDrop, timeToNextKeyLeftRight, timeToNextKeyDown, timeToNextKeyRotate;
+	float dropIntervalModded, timeToDrop, timeToNextKeyLeftRight, timeToNextKeyDown, timeToNextKeyRotate;
 	[Range(0.02f,1f)] public float keyRepeatRateLeftRight = 0.25f, keyRepeatRateRotate = 0.25f;
 	[Range(0.01f,0.5f)] public float keyRepeatRateDown = 0.01f;
 	public GameObject gameOverPanel, mainMenuPanel, settingsPanel, infoPanel, mainMenuBg, pausePanel;
@@ -23,7 +23,8 @@ public class GameController : MonoBehaviour {
 	Direction dragDirection = Direction.none, swipeDirection = Direction.none;
 	float timeToNextDrag, timeToNextSwipe;
     [Range(0.05f,1f)] public float minTimeToDrag = 0.15f, minTimeToSwipe = 0.3f;
-	bool gameStarted;
+	bool gameStarted = false;
+   
     void OnEnable()
 	{
 		TouchController.DragEvent += DragHandler;
@@ -36,55 +37,26 @@ public class GameController : MonoBehaviour {
 		TouchController.SwipeEvent -= SwipeHandler;
         TouchController.TapEvent -= TapHandler;
 	}
-
-    void Start ()
+    void Start () 
 	{
-		gameStarted = false;
-		ToggleMainMenu();
+		if(!gameStarted)
+			ToggleMainMenu();
 	}
 	void Update () 
 	{
-			if (!spawner || !gameBoard || !activeShape || gameOver || !soundManager || !scoreManager)
-				return;
-			if (gameStarted)
-				PlayerInput();
-	
+		if (!spawner || !gameBoard || !activeShape || gameOver || !soundManager || !scoreManager)
+			return;
+		if (gameStarted)
+			PlayerInput();
 	}
 	public void StartGame()
     {
 		gameStarted = true;
-		if(gameStarted)
-        {
-			gameBoard = GameObject.FindObjectOfType<Board>();
-			spawner = GameObject.FindObjectOfType<Spawner>();
-			soundManager = GameObject.FindObjectOfType<SoundManager>();
-			scoreManager = GameObject.FindObjectOfType<ScoreManager>();
-			ghost = GameObject.FindObjectOfType<Ghost>();
-			timeToNextKeyLeftRight = Time.time + keyRepeatRateLeftRight;
-			timeToNextKeyRotate = Time.time + keyRepeatRateRotate;
-			timeToNextKeyDown = Time.time + keyRepeatRateDown;
-			if (!gameBoard)
-				Debug.Log("No Game Board");
-			if (!soundManager)
-				Debug.Log("No Game Sound");
-			if (!spawner)
-				Debug.Log("No Game Spawner");
-			if (!scoreManager)
-				Debug.Log("No Game Score");
-			else
-			{
-				spawner.transform.position = Vectorf.Round(spawner.transform.position);
-				if (!activeShape)
-					activeShape = spawner.SpawnShape();
-			}
-			if (gameOverPanel)
-				gameOverPanel.SetActive(false);
 
-			if (pausePanel)
-				pausePanel.SetActive(false);
-		}
-			
-		
+        if (gameStarted)
+        {
+			Restart();
+        }
 	}
 	void LateUpdate()
 	{
@@ -234,12 +206,13 @@ public class GameController : MonoBehaviour {
 	}
 	public void Restart()
 	{
-	
 		Time.timeScale = 1f;
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		Scene currentScene = SceneManager.GetActiveScene();
+		SceneManager.LoadScene(currentScene.buildIndex);
 		mainMenuBg.SetActive(false);
 		mainMenuPanel.SetActive(false);
 		pausePanel.SetActive(false);
+
 	}
 	void PlaySound (AudioClip clip, float volMultiplier = 1.0f)
 	{
@@ -293,7 +266,6 @@ public class GameController : MonoBehaviour {
 	}
 	public void ToggleMainMenu()
 	{
-		
 		mainMenuPanel.SetActive(true);
 		mainMenuBg.SetActive(true);
 		gameOverPanel.SetActive(false);
