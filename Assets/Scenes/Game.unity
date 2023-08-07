@@ -529,7 +529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &85704274
 RectTransform:
   m_ObjectHideFlags: 0
@@ -606,7 +606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &135060458
 Transform:
   m_ObjectHideFlags: 0
@@ -3357,7 +3357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &753483487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3698,7 +3698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &839856740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5264,7 +5264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1190723338
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7417,13 +7417,10 @@ MonoBehaviour:
   mainMenuBg: {fileID: 1298079602}
   pausePanel: {fileID: 1543009092}
   isPaused: 0
-  gamePanel: {fileID: 85704273}
+  gameUpper: {fileID: 85704273}
   buttonBack: {fileID: 9087889450560136308}
-  scoreBoard: {fileID: 809963224}
-  lineBoard: {fileID: 1210440211}
   boardCode: {fileID: 839856739}
   levelBoard: {fileID: 1100885533}
-  pauseBoard: {fileID: 1699620065}
   particleBoard: {fileID: 135060457}
   spawnerBoard: {fileID: 753483486}
   ghostBoard: {fileID: 1904677154}
@@ -7524,6 +7521,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736878694}
   m_CullTransparentMesh: 1
+--- !u!1 &1747390215
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1747390216}
+  m_Layer: 0
+  m_Name: controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1747390216
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747390215}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5850685, y: 12.22603, z: -0.0019185999}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1751064189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 441340, guid: cc59342b511f54734b15fd3283d03cb3, type: 3}
@@ -8158,7 +8186,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1904677155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10112,7 +10140,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1726829854}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11030,6 +11058,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1726829854}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: StartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1726829854}
         m_TargetAssemblyTypeName: GameController, Assembly-CSharp
         m_MethodName: TogglePause
@@ -13267,7 +13307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 759de27b23237aa4e9586d2a4a052caf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ac36c8271933734e9c11f63b8a87baf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

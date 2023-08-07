@@ -15,16 +15,16 @@ public class GameController : MonoBehaviour {
 	[Range(0.02f,1f)] public float keyRepeatRateLeftRight = 0.25f, keyRepeatRateRotate = 0.25f;
 	[Range(0.01f,0.5f)] public float keyRepeatRateDown = 0.01f;
 	public GameObject gameOverPanel, mainMenuPanel, settingsPanel, infoPanel, mainMenuBg, pausePanel;
-	bool gameOver = false,  clockwise = true, didTap = false;
+	bool gameOver = false,  clockwise = true, didTap = false, gameStarted, wasPausedBefore = false;
 	public bool isPaused = false;
 	//public ParticlePlayer gameOverFx;
-	public GameObject gamePanel, buttonBack, scoreBoard, lineBoard, boardCode, levelBoard, pauseBoard, particleBoard, spawnerBoard, ghostBoard;
+	public GameObject gameUpper, buttonBack, boardCode, levelBoard, particleBoard, spawnerBoard, ghostBoard;
 	enum Direction {none, left, right, up, down}
 	Direction dragDirection = Direction.none, swipeDirection = Direction.none;
 	float timeToNextDrag, timeToNextSwipe;
     [Range(0.05f,1f)] public float minTimeToDrag = 0.15f, minTimeToSwipe = 0.3f;
-	bool gameStarted = false;
-   
+
+
     void OnEnable()
 	{
 		TouchController.DragEvent += DragHandler;
@@ -39,24 +39,72 @@ public class GameController : MonoBehaviour {
 	}
     void Start () 
 	{
-		if(!gameStarted)
+		gameStarted = PlayerPrefs.GetInt("GameStarted", 0) == 1;
+		if (!gameStarted)
 			ToggleMainMenu();
+        if (gameStarted)
+        {
+			mainMenuBg.SetActive(false);
+			mainMenuPanel.SetActive(false);
+			StartGame();
+        }
 	}
 	void Update () 
 	{
-		if (!spawner || !gameBoard || !activeShape || gameOver || !soundManager || !scoreManager)
-			return;
-		if (gameStarted)
+		if(gameStarted)
+        {
+			if (!spawner || !gameBoard || !activeShape || gameOver || !soundManager || !scoreManager)
+				return;
 			PlayerInput();
+		}
 	}
 	public void StartGame()
     {
-		gameStarted = true;
+			gameStarted = true;
+			PlayerPrefs.SetInt("GameStarted", 1);
+			PlayerPrefs.Save();
 
-        if (gameStarted)
-        {
-			Restart();
-        }
+			if (mainMenuPanel)
+				mainMenuPanel.SetActive(false);
+			if (mainMenuBg)
+				mainMenuBg.SetActive(false);
+			if (infoPanel)
+				infoPanel.SetActive(false);
+
+			boardCode.SetActive(true);
+			levelBoard.SetActive(true);
+			gameUpper.SetActive(true);
+			spawnerBoard.SetActive(true);
+			particleBoard.SetActive(true);
+			ghostBoard.SetActive(true);
+
+			gameBoard = GameObject.FindObjectOfType<Board>();
+			spawner = GameObject.FindObjectOfType<Spawner>();
+			soundManager = GameObject.FindObjectOfType<SoundManager>();
+			scoreManager = GameObject.FindObjectOfType<ScoreManager>();
+			ghost = GameObject.FindObjectOfType<Ghost>();
+			timeToNextKeyLeftRight = Time.time + keyRepeatRateLeftRight;
+			timeToNextKeyRotate = Time.time + keyRepeatRateRotate;
+			timeToNextKeyDown = Time.time + keyRepeatRateDown;
+			if (!gameBoard)
+				Debug.Log("No Game Board");
+			if (!soundManager)
+				Debug.Log("No Game Sound");
+			if (!spawner)
+				Debug.Log("No Game Spawner");
+			if (!scoreManager)
+				Debug.Log("No Game Score");
+			else
+			{
+				spawner.transform.position = Vectorf.Round(spawner.transform.position);
+				if (!activeShape)
+					activeShape = spawner.SpawnShape();
+			}
+			if (gameOverPanel)
+				gameOverPanel.SetActive(false);
+			if (pausePanel)
+				pausePanel.SetActive(false);
+			dropIntervalModded = dropInterval;
 	}
 	void LateUpdate()
 	{
@@ -206,31 +254,40 @@ public class GameController : MonoBehaviour {
 	}
 	public void Restart()
 	{
+		gameStarted = true;
+		PlayerPrefs.SetInt("GameStarted", 1);
+		PlayerPrefs.Save();
 		Time.timeScale = 1f;
 		Scene currentScene = SceneManager.GetActiveScene();
 		SceneManager.LoadScene(currentScene.buildIndex);
-		mainMenuBg.SetActive(false);
-		mainMenuPanel.SetActive(false);
+		if (mainMenuPanel)
+			mainMenuPanel.SetActive(false);
+		if (mainMenuBg)
+			mainMenuBg.SetActive(false);
 		pausePanel.SetActive(false);
-
 	}
 	void PlaySound (AudioClip clip, float volMultiplier = 1.0f)
 	{
 		if (soundManager.fxEnabled && clip)
 			AudioSource.PlayClipAtPoint (clip, Camera.main.transform.position, Mathf.Clamp(soundManager.fxVolume*volMultiplier,0.05f,1f));
 	}
+
 	public void TogglePause()
 	{
 		isPaused = !isPaused;
-
 		if (pausePanel)
 		{
 			pausePanel.SetActive(isPaused);
-
-			if (soundManager)
-				soundManager.musicSource.volume = (isPaused) ? soundManager.musicVolume * 0.25f : soundManager.musicVolume;
-
-			Time.timeScale = (isPaused) ? 0 : 1;
+			if (isPaused)
+			{
+				wasPausedBefore = Time.timeScale == 0; 
+				Time.timeScale = 0;
+			}
+			else
+			{
+				if (!wasPausedBefore)
+					Time.timeScale = 1;
+			}
 		}
 	}
 	void DragHandler(Vector2 dragMovement)
@@ -266,16 +323,17 @@ public class GameController : MonoBehaviour {
 	}
 	public void ToggleMainMenu()
 	{
+		gameStarted = false;
+		PlayerPrefs.SetInt("GameStarted", 0);
+		PlayerPrefs.Save();
 		mainMenuPanel.SetActive(true);
 		mainMenuBg.SetActive(true);
 		gameOverPanel.SetActive(false);
 		infoPanel.SetActive(false);
 		pausePanel.SetActive(false);
-		scoreBoard.SetActive(false);
-		lineBoard.SetActive(false);
+		gameUpper.SetActive(false);
 		boardCode.SetActive(false);
 		levelBoard.SetActive(false);
-		pauseBoard.SetActive(false);
 		spawnerBoard.SetActive(false);
 		particleBoard.SetActive(false);
 		ghostBoard.SetActive(false);
