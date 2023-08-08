@@ -137,4 +137,5 @@ public class Board : MonoBehaviour
             rowGlowFx[idx].Play();
         }
     }
+
 }

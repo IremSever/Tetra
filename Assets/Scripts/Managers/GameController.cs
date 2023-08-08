@@ -346,5 +346,7 @@ public class GameController : MonoBehaviour {
 	{
 		infoPanel.SetActive(false);
 	}
+
+
 }
 
