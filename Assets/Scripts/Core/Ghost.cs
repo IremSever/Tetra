@@ -6,7 +6,6 @@ public class Ghost : MonoBehaviour {
 	bool hitBottom = false;
 	public Color color = new Color (1f, 1f, 1f, 0.2f);
 	public Transform ghostTransform;
-
 	public void DrawGhost(Shape originalShape, Board gameBoard)
 	{
 		if (!ghostShape)
@@ -38,7 +37,6 @@ public class Ghost : MonoBehaviour {
 			}
 		}
 	}
-
 	public void Reset()
 	{
 		Destroy(ghostShape.gameObject);

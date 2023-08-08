@@ -17,14 +17,11 @@ public class GameController : MonoBehaviour {
 	public GameObject gameOverPanel, mainMenuPanel, settingsPanel, infoPanel, mainMenuBg, pausePanel;
 	bool gameOver = false,  clockwise = true, didTap = false, gameStarted, wasPausedBefore = false;
 	public bool isPaused = false;
-	//public ParticlePlayer gameOverFx;
 	public GameObject gameUpper, buttonBack, boardCode, levelBoard, particleBoard, spawnerBoard, ghostBoard;
 	enum Direction {none, left, right, up, down}
 	Direction dragDirection = Direction.none, swipeDirection = Direction.none;
 	float timeToNextDrag, timeToNextSwipe;
     [Range(0.05f,1f)] public float minTimeToDrag = 0.15f, minTimeToSwipe = 0.3f;
-
-
     void OnEnable()
 	{
 		TouchController.DragEvent += DragHandler;
@@ -70,14 +67,12 @@ public class GameController : MonoBehaviour {
 				mainMenuBg.SetActive(false);
 			if (infoPanel)
 				infoPanel.SetActive(false);
-
 			boardCode.SetActive(true);
 			levelBoard.SetActive(true);
 			gameUpper.SetActive(true);
 			spawnerBoard.SetActive(true);
 			particleBoard.SetActive(true);
 			ghostBoard.SetActive(true);
-
 			gameBoard = GameObject.FindObjectOfType<Board>();
 			spawner = GameObject.FindObjectOfType<Spawner>();
 			soundManager = GameObject.FindObjectOfType<SoundManager>();
@@ -271,7 +266,6 @@ public class GameController : MonoBehaviour {
 		if (soundManager.fxEnabled && clip)
 			AudioSource.PlayClipAtPoint (clip, Camera.main.transform.position, Mathf.Clamp(soundManager.fxVolume*volMultiplier,0.05f,1f));
 	}
-
 	public void TogglePause()
 	{
 		isPaused = !isPaused;

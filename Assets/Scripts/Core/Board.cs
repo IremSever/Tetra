@@ -100,7 +100,6 @@ public class Board : MonoBehaviour
     public IEnumerator ClearAllRows()
     {
         completedRows = 0;
-
         for (int y = 0; y < height; ++y)
         {
             if (IsComplete(y))

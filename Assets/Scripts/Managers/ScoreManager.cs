@@ -25,16 +25,16 @@ public class ScoreManager : MonoBehaviour {
 		switch (n)
 		{
 			case 1:
-				score += 40 * level;
+				score += 50 * level;
 				break;
 			case 2:
 				score += 100 * level;
 				break;
 			case 3:
-				score += 300 * level;
+				score += 500 * level;
 				break;
 			case 4:
-				score += 1200 * level;
+				score += 1500 * level;
 				break;
 		}
 		lines -= n;
@@ -64,7 +64,6 @@ public class ScoreManager : MonoBehaviour {
 		}
 		if (textLevel)
 			textLevel.text = level.ToString();
-
 		if (textBestScore)
 			textBestScore.text = PadZero(bestScore, 1);
 	}
@@ -78,13 +77,12 @@ public class ScoreManager : MonoBehaviour {
 		lines = linesPerLevel * level;
 		didLevelUp = true;
     }
-    private void Update()
+    void Update()
     {
 		if (didLevelUp)
 			spawnVortex.SetActive(true);
 		else
 			spawnVortex.SetActive(false);
-
 	}
 	void SaveBestScore()
 	{
