@@ -246,6 +246,7 @@ public class GameController : MonoBehaviour {
 			gameOverPanel.SetActive(true);
 		PlaySound(soundManager.gameOverSound, 5f);
 		gameOver = true;
+		isPaused = true;
 	}
 	public void Restart()
 	{
