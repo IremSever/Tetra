@@ -362,20 +362,22 @@ MonoBehaviour:
   fxEnabled: 1
   musicVolume: 1
   fxVolume: 1
-  clearRowSound: {fileID: 8300000, guid: 5e573cc7e2cd44522a9dbd65bd61eb95, type: 3}
-  moveSound: {fileID: 8300000, guid: 232745a37421848f0b6ba281e2775fd1, type: 3}
-  dropSound: {fileID: 8300000, guid: 2912ce0f9e2544ed7947ea6ba42a1347, type: 3}
-  gameOverSound: {fileID: 8300000, guid: fed0a0232ce1b40a882a18aa3a249a22, type: 3}
-  errorSound: {fileID: 8300000, guid: 837dfc9d854464e42ac6063e526eacc1, type: 3}
-  levelUpVocalClip: {fileID: 8300000, guid: 2c74626c1fb694ae6babfb9e4b3cf48e, type: 3}
+  clearRowSound: {fileID: 8300000, guid: 9834f356fe1da64449f7ec7504ebd392, type: 3}
+  moveSound: {fileID: 8300000, guid: c1376d49a7bf5d142a4b6d831999d162, type: 3}
+  dropSound: {fileID: 8300000, guid: fc2c1a1fb1c12bd4eaf9507f07dbad42, type: 3}
+  gameOverSound: {fileID: 8300000, guid: 1ac0895a50d248a428a412e4c8ef2d0e, type: 3}
+  errorSound: {fileID: 8300000, guid: 118619fdc3d92284c9fa75fa0354126f, type: 3}
+  levelUpVocalClip: {fileID: 8300000, guid: df2a7e4356438ce4c9b1565ab2c41305, type: 3}
   musicSource: {fileID: 175809454}
   musicClips:
-  - {fileID: 8300000, guid: 8e6afcfcba29249349c399c7826ebf58, type: 3}
-  - {fileID: 8300000, guid: 771c70196026e41e3abd6f9f46b17225, type: 3}
-  - {fileID: 8300000, guid: e227747a923da450c93c73bcd1a0965c, type: 3}
+  - {fileID: 8300000, guid: e6760a49f06c1834795fb63911dea953, type: 3}
+  - {fileID: 8300000, guid: 70ed51dec8e985742a61837a4d39b3fc, type: 3}
+  - {fileID: 8300000, guid: 92cfe54a928e7074a932f8245b62b5e9, type: 3}
   vocalClips:
-  - {fileID: 8300000, guid: 3ceac021a4ee34f8795b93fed21c2fc0, type: 3}
-  - {fileID: 8300000, guid: e753dc3dea92f4b1c81255878103653f, type: 3}
+  - {fileID: 8300000, guid: 6110638d4af3cb9418320893bdc67cae, type: 3}
+  - {fileID: 8300000, guid: 776feee823c95ce4eb8deaa4c7804249, type: 3}
+  - {fileID: 8300000, guid: 53d0699672101754eb1697bb082a1080, type: 3}
+  - {fileID: 8300000, guid: 9a3e94b4fd028fd4ba01c36ad7e2832d, type: 3}
   musicIconToggle: {fileID: 9087889451642686892}
   fxIconToggle: {fileID: 9087889450620645300}
 --- !u!1 &85704273

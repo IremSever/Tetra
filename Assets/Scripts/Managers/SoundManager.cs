@@ -4,7 +4,7 @@ using System.Collections;
 public class SoundManager : MonoBehaviour {
 
 	public bool musicEnabled = true, fxEnabled = true;
-	[Range(0,1)] public float musicVolume = 1.0f, fxVolume = 1.0f;
+	[Range(0,1)] public float musicVolume, fxVolume;
 	public AudioClip clearRowSound, moveSound, dropSound, gameOverSound, errorSound, levelUpVocalClip;
 	public AudioSource musicSource;
 	public AudioClip[] musicClips, vocalClips;
