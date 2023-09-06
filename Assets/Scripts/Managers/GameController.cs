@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
 	public GameObject gameOverPanel, mainMenuPanel, settingsPanel, infoPanel, mainMenuBg, pausePanel;
 	bool gameOver = false,  clockwise = true, didTap = false, gameStarted, wasPausedBefore = false;
 	public bool isPaused = false;
-	public GameObject gameUpper, buttonBack, boardCode, levelBoard, particleBoard, spawnerBoard, ghostBoard;
+	public GameObject gameUpper, pauseBack, buttonBack, boardCode, levelBoard, particleBoard, spawnerBoard, ghostBoard;
 	enum Direction {none, left, right, up, down}
 	Direction dragDirection = Direction.none, swipeDirection = Direction.none;
 	float timeToNextDrag, timeToNextSwipe;
@@ -269,7 +269,9 @@ public class GameController : MonoBehaviour {
 	}
 	public void TogglePause()
 	{
+		gameOverPanel.SetActive(false);
 		isPaused = !isPaused;
+		
 		if (pausePanel)
 		{
 			pausePanel.SetActive(isPaused);
@@ -310,10 +312,21 @@ public class GameController : MonoBehaviour {
 	{
 		gameOverPanel.SetActive(false);
 		settingsPanel.SetActive(true);
+		pausePanel.SetActive(false);
+
+		if (gameOver)
+			buttonBack.SetActive(true);
 	}
 	public void ToggleSettingsBack()
 	{
-		gameOverPanel.SetActive(true);
+		if (gameOverPanel)
+			gameOverPanel.SetActive(true);
+		settingsPanel.SetActive(false);
+	}
+	public void TogglePauseSettingsBack()
+	{
+		if (pausePanel)
+			pausePanel.SetActive(true);
 		settingsPanel.SetActive(false);
 	}
 	public void ToggleMainMenu()
@@ -347,7 +360,5 @@ public class GameController : MonoBehaviour {
 	{
 		infoPanel.SetActive(false);
 	}
-
-
 }
 
