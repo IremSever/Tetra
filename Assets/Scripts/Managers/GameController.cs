@@ -353,6 +353,8 @@ public class GameController : MonoBehaviour {
 	}
 	public void ToggleMainMenuSettings()
 	{
+		buttonBack.SetActive(false);
+		pauseBack.SetActive(false);
 		settingsPanel.SetActive(true);
 		buttonBack.SetActive(false);
 	}

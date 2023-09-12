@@ -7,10 +7,11 @@ using Newtonsoft.Json.Linq;
 using System.Net.Http;
 public class ForceUpdate : MonoBehaviour
 {
-    public GameObject versionPanel;
+    [SerializeField] GameObject versionPanel;
     string version;
     void Start()
     {
+        versionPanel.SetActive(false);
         using (var req = new HttpClient())
         {
             var response = req.GetAsync("https://api.tmgrup.com.tr/config/471");
@@ -26,7 +27,6 @@ public class ForceUpdate : MonoBehaviour
             Debug.Log("Version Control");
             versionPanel.SetActive(true);
             Time.timeScale = 0;
-            Debug.Log("çalýþtý");
         }
     }
     public void getTolink()
