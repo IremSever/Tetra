@@ -26,6 +26,7 @@ public class ForceUpdate : MonoBehaviour
             Debug.Log("Version Control");
             versionPanel.SetActive(true);
             Time.timeScale = 0;
+            Debug.Log("çalýþtý");
         }
     }
     public void getTolink()
