@@ -252,7 +252,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{dedicated}: Desktop/tetris.keystore'
+  AndroidKeystoreName: C:/Users/irem.sever/Desktop/tet/tetris.keystore
   AndroidKeyaliasName: developer
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
