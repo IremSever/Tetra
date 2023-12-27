@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour {
 	[Range(0.02f,1f)] public float keyRepeatRateLeftRight = 0.25f, keyRepeatRateRotate = 0.25f;
 	[Range(0.01f,0.5f)] public float keyRepeatRateDown = 0.01f;
 	public GameObject gameOverPanel, mainMenuPanel, settingsPanel, infoPanel, mainMenuBg, pausePanel;
-	bool gameOver = false,  clockwise = true, didTap = false, gameStarted, wasPausedBefore = false;
+	bool gameOver = false,  clockwise = true, didTap = false, gameStarted, wasPausedBefore = false, ad = false;
 	public bool isPaused = false;
 	public GameObject gameUpper, pauseBack, buttonBack, boardCode, levelBoard, particleBoard, spawnerBoard, ghostBoard;
 	enum Direction {none, left, right, up, down}
@@ -108,7 +108,7 @@ public class GameController : MonoBehaviour {
 	}
 	void MoveRight ()
 	{
-		activeShape.MoveRight ();
+		activeShape.MoveRight();
 		timeToNextKeyLeftRight = Time.time + keyRepeatRateLeftRight;
 
 		if (!gameBoard.IsValidPosition (activeShape)) 
@@ -247,6 +247,16 @@ public class GameController : MonoBehaviour {
 		PlaySound(soundManager.gameOverSound, 5f);
 		gameOver = true;
 		isPaused = true;
+		if (gameOverPanel != null && gameOverPanel.activeSelf && !ad)
+		{
+			InterstitialAds interstitialAds = FindObjectOfType<InterstitialAds>();
+			if (interstitialAds != null)
+			{
+				interstitialAds.LoadInterstitialAd();
+				interstitialAds.ShowInterstitialAd();
+				ad = true;
+			}
+		}
 	}
 	public void Restart()
 	{
