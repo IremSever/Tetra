@@ -4,8 +4,8 @@ using TMPro;
 
 public class TextManager : MonoBehaviour
 {
-    public TMP_Text settingText, pauseText, startText, gameOverText,
-                    scoreText, bestScoreText, levelText, forceUpdateText;
+    public TMP_Text settingText, pauseText, startText, gameOverText, languageText,
+                    scoreText, bestScoreText, levelText, downloadText, newVersionText;
 
     private LanguageManager languageManager;
 
@@ -41,7 +41,6 @@ public class TextManager : MonoBehaviour
         SetTexts(language);
     }
     
-     
     private void SetTexts(string currentLanguage)
     {
         settingText.text = languageManager.GetText("settings", currentLanguage);
@@ -51,6 +50,8 @@ public class TextManager : MonoBehaviour
         scoreText.text = languageManager.GetText("score", currentLanguage);
         bestScoreText.text = languageManager.GetText("best_score", currentLanguage);
         levelText.text = languageManager.GetText("level", currentLanguage);
-        forceUpdateText.text = languageManager.GetText("force_update", currentLanguage);
+        downloadText.text = languageManager.GetText("download", currentLanguage);
+        newVersionText.text = languageManager.GetText("new_version", currentLanguage);
+        languageText.text = languageManager.GetText("language", currentLanguage);
     }
 }

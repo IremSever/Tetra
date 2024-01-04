@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class LanguageManager : MonoBehaviour
 {
     Dictionary<string, Dictionary<string, string>> languages;
-    public Button englishButton;
 
     private void Awake()
     {
@@ -19,7 +18,9 @@ public class LanguageManager : MonoBehaviour
         turkish.Add("score", "Skor");
         turkish.Add("best_score", "En Yüksek Skor");
         turkish.Add("level", "Seviye");
-        turkish.Add("force_update", "Güncelle");
+        turkish.Add("download", "Güncelle");
+        turkish.Add("new_version", "Yeni Sürüm");
+        turkish.Add("language", "Oyun Dili");
 
         Dictionary<string, string> english = new Dictionary<string, string>();
         english.Add("start", "START");
@@ -29,7 +30,9 @@ public class LanguageManager : MonoBehaviour
         english.Add("score", "Score"); 
         english.Add("best_score", "Best Score");
         english.Add("level", "Level");
-        english.Add("force_update", "Update");
+        english.Add("download", "Update");
+        english.Add("new_version", "New Version");
+        english.Add("language", "Language");
 
         Dictionary<string, string> spanish = new Dictionary<string, string>();
         spanish.Add("start", "COMENZAR");
@@ -39,7 +42,9 @@ public class LanguageManager : MonoBehaviour
         spanish.Add("score", "Puntuación");
         spanish.Add("best_score", "Mejor Puntuación");
         spanish.Add("level", "Nivel");
-        spanish.Add("force_update", "Actualizar");
+        spanish.Add("download", "Actualizar");
+        spanish.Add("new_version", "Nueva Versión");
+        spanish.Add("language", "Lengua");
 
         Dictionary<string, string> german = new Dictionary<string, string>();
         german.Add("start", "JOUER");
@@ -49,7 +54,9 @@ public class LanguageManager : MonoBehaviour
         german.Add("score", "Punktestand");
         german.Add("best_score", "Bestes Punktestand");
         german.Add("level", "Niveau");
-        german.Add("force_update", "Neuausgabe");
+        german.Add("download", "Neuausgabe");
+        german.Add("new_version", "Die Neue Fassung");
+        german.Add("language", "Sprache");
 
         Dictionary<string, string> french = new Dictionary<string, string>();
         french.Add("start", "JOUER");
@@ -59,7 +66,9 @@ public class LanguageManager : MonoBehaviour
         french.Add("score", "Score");
         french.Add("best_score", "Meilleur Score");
         french.Add("level", "Niveler");
-        french.Add("force_update", "Actualiser");
+        french.Add("download", "Actualiser");
+        french.Add("new_version", "Nouvelle Version");
+        french.Add("language", "Langage");
 
         languages.Add("Turkish", turkish);
         languages.Add("English", english);

@@ -11,10 +11,13 @@ public class GameController : MonoBehaviour {
 	Shape activeShape;
 	Ghost ghost;
 	public float dropInterval = 0.1f;
-	float dropIntervalModded, timeToDrop, timeToNextKeyLeftRight, timeToNextKeyDown, timeToNextKeyRotate;
-	[Range(0.02f,1f)] public float keyRepeatRateLeftRight = 0.25f, keyRepeatRateRotate = 0.25f;
+	float dropIntervalModded, timeToDrop, timeToNextKeyLeftRight, 
+		  timeToNextKeyDown, timeToNextKeyRotate;
+	[Range(0.02f,1f)] public float keyRepeatRateLeftRight = 0.25f,
+								   keyRepeatRateRotate = 0.25f;
 	[Range(0.01f,0.5f)] public float keyRepeatRateDown = 0.01f;
-	public GameObject gameOverPanel, mainMenuPanel, settingsPanel, infoPanel, mainMenuBg, pausePanel;
+	public GameObject gameOverPanel, mainMenuPanel, settingsPanel, 
+					  languagePanel, mainMenuBg, pausePanel;
 	bool gameOver = false,  clockwise = true, didTap = false, gameStarted, wasPausedBefore = false, ad = false;
 	public bool isPaused = false;
 	public GameObject gameUpper, pauseBack, buttonBack, boardCode, levelBoard, particleBoard, spawnerBoard, ghostBoard;
@@ -65,8 +68,8 @@ public class GameController : MonoBehaviour {
 				mainMenuPanel.SetActive(false);
 			if (mainMenuBg)
 				mainMenuBg.SetActive(false);
-			if (infoPanel)
-				infoPanel.SetActive(false);
+			if (languagePanel)
+				languagePanel.SetActive(false);
 			boardCode.SetActive(true);
 			levelBoard.SetActive(true);
 			gameUpper.SetActive(true);
@@ -247,16 +250,19 @@ public class GameController : MonoBehaviour {
 		PlaySound(soundManager.gameOverSound, 5f);
 		gameOver = true;
 		isPaused = true;
-		if (gameOverPanel != null && gameOverPanel.activeSelf && !ad)
-		{
-			InterstitialAds interstitialAds = FindObjectOfType<InterstitialAds>();
-			if (interstitialAds != null)
-			{
-				interstitialAds.LoadInterstitialAd();
-				interstitialAds.ShowInterstitialAd();
-				ad = true;
-			}
-		}
+
+		//ads
+		//if (gameOverPanel != null && gameOverPanel.activeSelf && !ad)
+		//{
+		//	
+		//	//InterstitialAds interstitialAds = FindObjectOfType<InterstitialAds>();
+		//	if (interstitialAds != null)
+		//	{
+		//		interstitialAds.LoadInterstitialAd();
+		//		interstitialAds.ShowInterstitialAd();
+		//		ad = true;
+		//	}
+		//}
 	}
 	public void Restart()
 	{
@@ -347,7 +353,7 @@ public class GameController : MonoBehaviour {
 		mainMenuPanel.SetActive(true);
 		mainMenuBg.SetActive(true);
 		gameOverPanel.SetActive(false);
-		infoPanel.SetActive(false);
+		languagePanel.SetActive(false);
 		pausePanel.SetActive(false);
 		gameUpper.SetActive(false);
 		boardCode.SetActive(false);
@@ -359,7 +365,7 @@ public class GameController : MonoBehaviour {
 	}
 	public void ToggleMainMenuInfo()
 	{
-		infoPanel.SetActive(true);
+		languagePanel.SetActive(true);
 	}
 	public void ToggleMainMenuSettings()
 	{
@@ -370,7 +376,7 @@ public class GameController : MonoBehaviour {
 	}
 	public void ToggleInfoExit()
 	{
-		infoPanel.SetActive(false);
+		languagePanel.SetActive(false);
 	}
 }
 
