@@ -20,7 +20,7 @@ public class LanguageManager : MonoBehaviour
         turkish.Add("level", "Seviye");
         turkish.Add("download", "Güncelle");
         turkish.Add("new_version", "Yeni Sürüm");
-        turkish.Add("language", "Oyun Dili");
+        turkish.Add("language", "Türkçe");
 
         Dictionary<string, string> english = new Dictionary<string, string>();
         english.Add("start", "START");
@@ -32,7 +32,7 @@ public class LanguageManager : MonoBehaviour
         english.Add("level", "Level");
         english.Add("download", "Update");
         english.Add("new_version", "New Version");
-        english.Add("language", "Language");
+        english.Add("language", "Englýsh");
 
         Dictionary<string, string> spanish = new Dictionary<string, string>();
         spanish.Add("start", "COMENZAR");
@@ -44,7 +44,7 @@ public class LanguageManager : MonoBehaviour
         spanish.Add("level", "Nivel");
         spanish.Add("download", "Actualizar");
         spanish.Add("new_version", "Nueva Versión");
-        spanish.Add("language", "Lengua");
+        spanish.Add("language", "Español");
 
         Dictionary<string, string> german = new Dictionary<string, string>();
         german.Add("start", "JOUER");
@@ -56,7 +56,7 @@ public class LanguageManager : MonoBehaviour
         german.Add("level", "Niveau");
         german.Add("download", "Neuausgabe");
         german.Add("new_version", "Die Neue Fassung");
-        german.Add("language", "Sprache");
+        german.Add("language", "Deutsche");
 
         Dictionary<string, string> french = new Dictionary<string, string>();
         french.Add("start", "JOUER");
@@ -68,7 +68,7 @@ public class LanguageManager : MonoBehaviour
         french.Add("level", "Niveler");
         french.Add("download", "Actualiser");
         french.Add("new_version", "Nouvelle Version");
-        french.Add("language", "Langage");
+        french.Add("language", "Françaýs");
 
         languages.Add("Turkish", turkish);
         languages.Add("English", english);
