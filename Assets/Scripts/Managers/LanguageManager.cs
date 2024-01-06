@@ -47,7 +47,7 @@ public class LanguageManager : MonoBehaviour
         spanish.Add("language", "Español");
 
         Dictionary<string, string> german = new Dictionary<string, string>();
-        german.Add("start", "JOUER");
+        german.Add("start", "SPIEL");
         german.Add("pause", "PAUSE");
         german.Add("game_over", "SPIEL VORBEI");
         german.Add("settings", "EINSTELLUNGEN");
