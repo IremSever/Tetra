@@ -2,8 +2,8 @@
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class GameController : MonoBehaviour {
-
+public class GameController : MonoBehaviour 
+{
 	Board gameBoard;
 	Spawner spawner;
 	SoundManager soundManager;
@@ -345,6 +345,7 @@ public class GameController : MonoBehaviour {
 			pausePanel.SetActive(true);
 		settingsPanel.SetActive(false);
 	}
+
 	public void ToggleMainMenu()
 	{
 		gameStarted = false;
