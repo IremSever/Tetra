@@ -32,7 +32,7 @@ public class LanguageManager : MonoBehaviour
         english.Add("level", "Level");
         english.Add("download", "Update");
         english.Add("new_version", "New Version");
-        english.Add("language", "Englýsh");
+        english.Add("language", "English");
 
         Dictionary<string, string> spanish = new Dictionary<string, string>();
         spanish.Add("start", "COMENZAR");
